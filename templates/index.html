@@ -11,11 +11,86 @@
 </head>
 
 <header>
-    <div id="header-left">FRIENDLY CAFES IN LONDON</div>
-    <div id="header-right">API</div>
+    <div id="header-left">
+        <h1>CAFES IN LONDON</h1> 
+    </div>
+    <div id="header-right">
+        <a href="{{url_for('api')}}">API</a>
+    </div>
+    
 </header>
 <body>
-    <div id="fixed header">LONDON</div>
+    <div id="description-div">
+        <h3>London is a city full of culture and history, 
+        but it's also a city with a vibrant café scene. If you're looking 
+        for a great place to relax and enjoy a cup of coffee or tea, you 
+        should definitely check out some of the cafes we've selected.
+        When choosing a café to visit, there are several factors that you may want to consider. 
+        Here are some of the characteristics of cafes to keep in mind:</h3>
+        <ul>
+            <li>Toilet: Access to clean and well-maintained toilets is important for any café, especially 
+                if you plan on spending a long time there.</li>
+        
+            <li>Price: The cost of drinks and food at a café can vary widely. It's a good idea to check 
+                the menu and prices before visiting, so you know what to expect.</li>
+        
+            <li>Seating: The number of seats available at a café is important to consider, especially 
+                if you're visiting with a group. Some cafes may have limited seating or may be quite busy, so 
+                it's good to check ahead of time.</li>
+        
+            <li>WiFi: Many cafes now offer free WiFi for customers, which is great for those who need to work or
+                study while enjoying a drink.</li>
+        
+            <li>Location: The location of a café can be important, especially if you're looking for a specific 
+                type of atmosphere or if you want to be close to a particular area of the city.</li>
+        
+            <li>Charging: Some cafes now have charging stations where you can charge your phone or other electronic
+                devices.</li>
+        
+    </ul>
+        <p>Loking for a cozy spot to read a book, a lively place to catch up with friends, 
+        or a quiet place to work, you'll find it here.</p>
+        <h4>WORK-FRIENDLY PLACES</h4>
+    </div>
+    {% for cafe in cafes %}
+    <div id="cafes">
+        
+        <div id="cafes_info">
+        <h4>{{cafe.name}}</h4>
+        <p>Localisation: {{cafe.location}}</p>
+        <p>Charging {% if cafe.has_sockets ==1%}
+            <span class="icon-yes"></span>
+        {% elif cafe.has_sockets ==0%}
+        <span class="icon-no"></span>
+        {% endif %}
+</p>
+
+        <p>Toilet {% if cafe.has_toilet ==1%}
+            <span class="icon-yes"></span>
+        {% elif cafe.has_toilet ==0%}
+        <span class="icon-no"></span>
+        {% endif %}
+        <p>WiFi {% if cafe.has_wifi ==1%}
+            <span class="icon-yes"></span>
+        {% elif cafe.has_wifi ==0%}
+        <span class="icon-no"></span>
+        {% endif %}</p>
+        <p>The ability to make calls {% if cafe.can_take_calls ==1%}
+            <span class="icon-yes"></span>
+        {% elif cafe.can_take_calls ==0%}
+        <span class="icon-no"></span>
+        {% endif %}
+        </p>
+        <p>Number of seats: {{cafe.seats}}</p>
+        <p>Price: {{cafe.coffee_price}}</p>
+        <a href="{{cafe.map_url}}" target="_blank">Show map</a>
+        </div>
+        <img id="cafe_photo" src="{{cafe.img_url}}"></img> 
+       
+    </div>
+    {% endfor %}
+   
+
 
 
 </body>

@@ -18,13 +18,59 @@ header {
     float: right;
 }
 
-#fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+
+
+
+#description-div{
+    position: relative;
+    top: 10px;
+    font-size: 16px;
+    line-height:1.5;
+
+}
+
+#cafes{
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    top: 30px;
+    bottom: 50px;
+    line-height: 0.5;
+    width: 50%;
+    margin-left: 50px;
+}
+
+#cafe_photo{
     width: 100%;
-    background: #fff;
-    text-align: center;
-    padding:10px;
-    z-index: 1000;
+    height: 80%;
+    margin-right: 50px;
+    margin-bottom: 80px;
+}
+
+#cafe_info{
+    
+    width: 320px;
+    height: 500px;
+}
+
+
+
+.icon-yes:before {
+    content: "✔"; /* Unicode of the checkmark */
+    font-size: 20px; /* adjust the size */
+    color: green;
+}
+
+.icon-no:before{
+    content: " x"; /* Unicode of the checkmark */
+    font-size: 20px; /* adjust the size */
+    font-style: bold;
+    color: red;
+}
+
+iframe{
+    border: none;
+    overflow: hidden;
 }
